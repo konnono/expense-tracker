@@ -2,10 +2,11 @@
   {{#each records}}
   <li class="list-group-item">
     <i class="{{this.icon}}"></i>
-    {{this.category}}
     {{this.name}}
     {{this.date}}
     {{this.amount}}
   </li>
   {{/each}}
 </ul>
+
+<a class="btn btn-primary" href="/records/new" role="button">新增支出</a>
