@@ -11,6 +11,8 @@ db.once('open', () => {
         setTimeout(() => {
           const ctg = categories.filter(item => item.name === record.category)
           record.icon = JSON.stringify(ctg[0].icon)
+          record.icon = record.icon.substr(1, record.icon.length - 2)
+          console.log(record)
           Record.create(record)
         }, index * 500)
       })

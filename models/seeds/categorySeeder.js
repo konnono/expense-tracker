@@ -6,6 +6,7 @@ const categories = require('./categories.json')
 db.once('open', () => {
   categories.forEach((category, index) => {
     setTimeout(() => {
+      console.log(category)
       Category.create(category)
     }, index * 500)
   })
