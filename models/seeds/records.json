@@ -1,0 +1,38 @@
+[
+  {
+    "name": "燈泡",
+    "category": "家居物業",
+    "date": "2021-06-01",
+    "amount": 250
+  },
+  {
+    "name": "油漆",
+    "category": "家居物業",
+    "date": "2021-06-01",
+    "amount": 550
+  },
+  {
+    "name": "Switch健身環",
+    "category": "休閒娛樂",
+    "date": "2021-06-05",
+    "amount": 2400
+  },
+  {
+    "name": "高鐵票",
+    "category": "交通出行",
+    "date": "2021-06-10",
+    "amount": 2000
+  },
+  {
+    "name": "牛排",
+    "category": "餐飲食品",
+    "date": "2021-06-15",
+    "amount": 3000
+  },
+  {
+    "name": "捐款",
+    "category": "其他",
+    "date": "2021-06-17",
+    "amount": 700
+  }
+]
