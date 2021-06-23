@@ -7,6 +7,8 @@
     {{this.date}}
     {{this.amount}}
     <a class="btn btn-primary" href="/records/{{this._id}}/edit" role="button">編輯</a>
+    <form action="/records/{{this._id}}/?_method=DELETE" method="POST" onSubmit="return confirm('確定要刪除這筆資料嗎?')"
+      style="display: inline;"><button type="submit" class="btn btn-primary">刪除</button></form>
   </li>
   {{/each}}
 </ul>

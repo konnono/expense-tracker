@@ -89,6 +89,15 @@ app.put('/records/:id/edit', (req, res) => {
     }).catch(error => console.log(error))
 })
 
+app.delete('/records/:id/', (req, res) => {
+  const id = req.params.id
+  Record.findById(id)
+    .then(todo => todo.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+
 app.listen(port, () => {
   console.log(`Server is up and running on http://localport:${port}`)
 })
