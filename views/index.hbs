@@ -1,3 +1,11 @@
+<form action="/" method="GET">
+  <select class="form-control" name="filter" onchange="this.form.submit()">
+    <option value="">全部類別</option>
+    {{#each categories}}
+    {{selectOption ../filter this.name }}
+    {{/each}}
+  </select>
+</form>
 <h1>總金額:{{calculateTotal records}}</h1>
 <ul class="list-group">
   {{#each records}}

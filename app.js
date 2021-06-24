@@ -8,7 +8,6 @@ require('./config/mongoose')
 
 const app = express()
 const port = 3000
-
 const hbs = exphbs.create({ defaultLayout: 'main', extname: '.hbs' })
 
 app.engine('hbs', hbs.engine)
@@ -18,7 +17,7 @@ app.use(methodOverride('_method'))
 app.use(routes)
 
 hbs.handlebars.registerHelper('selectOption', function (category, option) {
-  return category === listOption ? new Handlebars.SafeString('<option selected>' + option + '</option>') : new Handlebars.SafeString('<option>' + listOption + '</option>')
+  return category === option ? new Handlebars.SafeString('<option selected>' + option + '</option>') : new Handlebars.SafeString('<option>' + option + '</option>')
 })
 
 hbs.handlebars.registerHelper('calculateTotal', function (records) {
@@ -28,7 +27,6 @@ hbs.handlebars.registerHelper('calculateTotal', function (records) {
   })
   return sum
 })
-
 
 app.listen(port, () => {
   console.log(`Server is up and running on http://localport:${port}`)

@@ -5,10 +5,16 @@ const Record = require('../../models/record')
 const Category = require('../../models/category')
 
 router.get('/', (req, res) => {
-  Record.find()
+  const filter = req.query.filter ? { category: req.query.filter } : {}
+  Category.find()
     .lean()
-    .then(records => {
-      res.render('index', { records })
+    .then(categories => {
+      Record.find(filter)
+        .lean()
+        .then(records => {
+          res.render('index', { records, categories, filter: req.query.filter })
+        })
+        .catch(error => console.log(error))
     })
     .catch(error => console.log(error))
 })
