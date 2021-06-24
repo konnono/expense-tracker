@@ -17,8 +17,16 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(routes)
 
-hbs.handlebars.registerHelper('selectOption', function (category, listOption) {
-  return category === listOption ? new Handlebars.SafeString('<option selected>' + listOption + '</option>') : new Handlebars.SafeString('<option>' + listOption + '</option>')
+hbs.handlebars.registerHelper('selectOption', function (category, option) {
+  return category === listOption ? new Handlebars.SafeString('<option selected>' + option + '</option>') : new Handlebars.SafeString('<option>' + listOption + '</option>')
+})
+
+hbs.handlebars.registerHelper('calculateTotal', function (records) {
+  let sum = 0
+  records.forEach(record => {
+    sum += record.amount
+  })
+  return sum
 })
 
 
