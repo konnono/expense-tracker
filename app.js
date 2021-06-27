@@ -7,7 +7,7 @@ const routes = require('./routes')
 require('./config/mongoose')
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 const hbs = exphbs.create({
   defaultLayout: 'main', extname: '.hbs',
   helpers: {
@@ -23,5 +23,5 @@ app.use(methodOverride('_method'))
 app.use(routes)
 
 app.listen(port, () => {
-  console.log(`Server is up and running on http://localport:${port}`)
+  console.log(`Server is up and running on port:${port}`)
 })
