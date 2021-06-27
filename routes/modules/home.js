@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
     .then(categories => {
       Record.find(filter)
         .lean()
+        .sort({ date: 'desc' })
         .then(records => {
           res.render('index', { records, categories, filter: req.query.filter })
         })
