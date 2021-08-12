@@ -3,36 +3,70 @@
     "name": "燈泡",
     "category": "家居物業",
     "date": "2021-06-01",
-    "amount": 250
+    "amount": 250,
+    "merchant": "五金行"
   },
   {
     "name": "油漆",
     "category": "家居物業",
     "date": "2021-06-01",
-    "amount": 550
+    "amount": 550,
+    "merchant": "特力屋"
   },
   {
     "name": "Switch健身環",
     "category": "休閒娛樂",
     "date": "2021-06-05",
-    "amount": 2400
+    "amount": 2400,
+    "merchant": "三創"
   },
   {
     "name": "高鐵票",
     "category": "交通出行",
     "date": "2021-06-10",
-    "amount": 2000
+    "amount": 2000,
+    "merchant": "台北車站"
   },
   {
     "name": "牛排",
     "category": "餐飲食品",
     "date": "2021-06-15",
-    "amount": 3000
+    "amount": 3000,
+    "merchant": "茹絲葵"
   },
   {
     "name": "捐款",
     "category": "其他",
     "date": "2021-06-17",
-    "amount": 700
+    "amount": 700,
+    "merchant": "世界展望會"
+  },
+  {
+    "name": "電影票",
+    "category": "休閒娛樂",
+    "date": "2021-07-05",
+    "amount": 840,
+    "merchant": "長春國賓"
+  },
+  {
+    "name": "捐款",
+    "category": "其他",
+    "date": "2021-08-12",
+    "amount": 500,
+    "merchant": "流浪動物"
+  },
+  {
+    "name": "火鍋",
+    "category": "餐飲食品",
+    "date": "2021-06-15",
+    "amount": 600,
+    "merchant": "馬辣"
+  },
+  {
+    "name": "衛生紙",
+    "category": "家居物業",
+    "date": "2021-07-21",
+    "amount": 200,
+    "merchant": "全聯"
   }
 ]

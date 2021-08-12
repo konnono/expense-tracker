@@ -4,6 +4,7 @@ const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
 
+// 渲染新增紀錄頁面
 router.get('/new', (req, res) => {
   Category.find()
     .lean()
@@ -13,18 +14,13 @@ router.get('/new', (req, res) => {
 
 })
 
+//新增一筆紀錄
 router.post('/', (req, res) => {
-  const categoryName = req.body.category
-  Category.findOne({ name: { $regex: categoryName, $options: 'i' } })
-    .lean()
-    .then(ctg => {
-      req.body.icon = ctg.icon
-      Record.create(req.body)
-      res.redirect('./')
-    })
-    .catch(error => console.log(error))
+  Record.create(req.body)
+  res.redirect('./')
 })
 
+// 渲染單筆紀錄編輯頁面
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   Category.find()
@@ -41,30 +37,29 @@ router.get('/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// 編輯單筆紀錄
 router.put('/:id/edit', (req, res) => {
   const id = req.params.id
-  const { name, date, category, amount } = req.body
-  Category.findOne({ name: { $regex: category, $options: 'i' } })
-    .lean()
-    .then(ctg => {
-      Record.findById(id)
-        .then(record => {
-          record.name = name
-          record.date = date
-          record.category = category
-          record.amount = amount
-          record.icon = ctg.icon
-          record.save()
-        })
-    }).then(() => {
+  const { name, date, category, amount, merchant } = req.body
+  Record.findById(id)
+    .then(record => {
+      record.name = name
+      record.date = date
+      record.category = category
+      record.amount = amount
+      record.merchant = merchant
+      record.save()
+    })
+    .then(() => {
       res.redirect('/')
     }).catch(error => console.log(error))
 })
 
+// 刪除單筆紀錄
 router.delete('/:id/', (req, res) => {
   const id = req.params.id
   Record.findById(id)
-    .then(todo => todo.remove())
+    .then(record => record.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
