@@ -1,25 +1,16 @@
 const db = require('../../config/mongoose')
 const Record = require('../record')
-const Category = require('../category')
 const records = require('./records.json')
 
 db.once('open', () => {
-  Category.find()
-    .lean()
-    .then(categories => {
-      records.forEach((record, index) => {
-        setTimeout(() => {
-          const ctg = categories.filter(item => item.name === record.category)
-          record.icon = JSON.stringify(ctg[0].icon)
-          record.icon = record.icon.substr(1, record.icon.length - 2)
-          console.log(record)
-          Record.create(record)
-        }, index * 500)
-      })
-
-      setTimeout(() => {
-        console.log('Record seeder completed!')
-        db.close()
-      }, records.length * 500 + 1000)
+  Promise.all(records)
+    .then(record => {
+      console.log(record)
+      return Record.create(record)
     })
+    .then(() => {
+      console.log('Record seeder completed!')
+      db.close()
+    })
+    .catch(err => console.log(err))
 })

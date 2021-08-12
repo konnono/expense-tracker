@@ -4,15 +4,14 @@ const Category = require('../category')
 const categories = require('./categories.json')
 
 db.once('open', () => {
-  categories.forEach((category, index) => {
-    setTimeout(() => {
+  Promise.all(categories)
+    .then(category => {
       console.log(category)
-      Category.create(category)
-    }, index * 500)
-  })
-
-  setTimeout(() => {
-    console.log('Category seeder completed!')
-    db.close()
-  }, categories.length * 500 + 1000)
+      return Category.create(category)
+    })
+    .then(() => {
+      console.log('Category seeder completed!')
+      db.close()
+    })
+    .catch(err => console.log(err))
 })
