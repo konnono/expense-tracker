@@ -21,7 +21,7 @@
     {{#each records}}
     <li class="list-group-item">
       <div class="row">
-        <i class="{{this.icon}} fa-2x col-1 d-flex align-items-center text-info"></i>
+        <i class="{{printIcon this.category ../categories}} fa-2x col-1 d-flex align-items-center text-info"></i>
         <div class="col-6">
           <h5>{{this.name}}</h5>
           <small>{{this.date}}</small>

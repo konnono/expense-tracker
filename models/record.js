@@ -10,10 +10,6 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
-  icon: {
-    type: String,
-    required: false
-  },
   date: {
     type: String,
     required: true

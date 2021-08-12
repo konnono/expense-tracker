@@ -12,7 +12,8 @@ const hbs = exphbs.create({
   defaultLayout: 'main', extname: '.hbs',
   helpers: {
     selectOption: require('./helpers/selectOption'),
-    calculateTotal: require('./helpers/calculateTotal')
+    calculateTotal: require('./helpers/calculateTotal'),
+    printIcon: require('./helpers/printIcon')
   }
 })
 
