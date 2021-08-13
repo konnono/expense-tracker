@@ -13,7 +13,8 @@ const hbs = exphbs.create({
   helpers: {
     selectOption: require('./helpers/selectOption'),
     calculateTotal: require('./helpers/calculateTotal'),
-    printIcon: require('./helpers/printIcon')
+    printIcon: require('./helpers/printIcon'),
+    printDate: require('./helpers/printDate')
   }
 })
 
