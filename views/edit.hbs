@@ -17,7 +17,7 @@
       <label for="category">類別<span style="color:red;">*</span>:</label>
       <select class="form-control" id="category" name="category">
         {{#each categories}}
-        {{selectOption ../category this.name }}
+        {{selectOption ../category this.name ''}}
         {{/each}}
       </select>
     </div>
