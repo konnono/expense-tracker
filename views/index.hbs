@@ -1,31 +1,31 @@
 {{!-- Filter bar --}}
-<div class="filterBar mt-2 mx-auto" style="width:400px">
-  <form action="/" method="GET">
-    <select class="form-control" name="categoryFilter" onchange="this.form.submit()">
+<div class="filterBar mt-5 mb-5 mx-auto d-flex" style="width:50%;">
+  <form action="/" method="GET" class="d-flex justify-content-around col-10">
+    <select class=" form-control col-5" name="categoryFilter" onchange="this.form.submit()" style="display:inline;">
       <option value="">全部類別</option>
       {{#each categories}}
       {{selectOption ../categoryFilter this.name ''}}
       {{/each}}
     </select>
-    <select class="form-control" name="yearFilter" onchange="this.form.submit()">
+    <select class="form-control col-3" name="yearFilter" onchange="this.form.submit()" style="display:inline;">
       <option value="">篩選年度</option>
       {{#each years}}
       {{selectOption ../yearFilter this '年'}}
       {{/each}}
     </select>
-    <select class="form-control" name="monthFilter" onchange="this.form.submit()">
+    <select class="form-control col-3" name="monthFilter" onchange="this.form.submit()" style="display:inline;">
       <option value="">篩選月份</option>
       {{#each months}}
       {{selectOption ../monthFilter this '月'}}
       {{/each}}
     </select>
   </form>
-  <a href='/' class="btn btn-primary">清除篩選</a>
+  <a href='/' class=" btn btn-info col-2" style="display:inline;">清除篩選</a>
 </div>
 
 {{!-- Display area --}}
 <div class="container" style="width:680px;">
-  <div class="mt-2 mx-auto" style="width:200px">
+  <div class="mt-2 mb-3 mx-auto" style="width:200px">
     <span class="text-left">總金額:</span>
     <h1 class="text-center text-primary">{{calculateTotal records}}</h1>
   </div>
