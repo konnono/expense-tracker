@@ -1,10 +1,22 @@
 {{!-- Filter bar --}}
 <div class="filterBar mt-2 mx-auto" style="width:400px">
   <form action="/" method="GET">
-    <select class="form-control" name="filter" onchange="this.form.submit()">
+    <select class="form-control" name="categoryFilter" onchange="this.form.submit()">
       <option value="">全部類別</option>
       {{#each categories}}
-      {{selectOption ../filter this.name }}
+      {{selectOption ../categoryFilter this.name }}
+      {{/each}}
+    </select>
+    <select class="form-control" name="yearFilter" onchange="this.form.submit()">
+      <option value="">篩選年度</option>
+      {{#each years}}
+      {{selectOption ../yearFilter this }}
+      {{/each}}
+    </select>
+    <select class="form-control" name="monthFilter" onchange="this.form.submit()">
+      <option value="">篩選月份</option>
+      {{#each months}}
+      {{selectOption ../monthFilter this }}
       {{/each}}
     </select>
   </form>
