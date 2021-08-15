@@ -9,33 +9,45 @@ router.get('/login', (req, res) => {
   res.render('login')
 })
 
-// 渲染使用者登入頁面
+// 使用者登入
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/users/login'
 }))
 
+// 渲染使用者註冊頁面
+router.get('/register', (req, res) => {
+  res.render('register')
+})
+
 //註冊使用者
 router.post('/register', (req, res) => {
+
   const { name, email, password, confirmPassword } = req.body
+  const errors = []
 
-  //若未輸入email、密碼及確認密碼，請使用者重新填寫
-  if (!email || !password || !confirmPassword) {
-    console.log('Email、密碼及確認密碼為必填欄位')
-    return res.render('register', { name, email, password, confirmPassword })
+  // 驗證傳入資料，若有問題回到註冊畫面修正重填
+  if (!email) {
+    errors.push({ message: 'Email欄位為必填。' })
   }
-
-  //若密碼及確認密碼不相符，請使用者重新填寫
+  if (!password) {
+    errors.push({ message: '密碼欄位為必填。' })
+  }
+  if (!confirmPassword) {
+    errors.push({ message: '確認密碼欄位為必填' })
+  }
   if (password !== confirmPassword) {
-    console.log('密碼與確認密碼不同')
-    return res.render('register', { name, email, password, confirmPassword })
+    errors.push({ message: '密碼與確認密碼不相符！' })
+  }
+  if (errors.length) {
+    return res.render('register', { errors, name, email, password, confirmPassword })
   }
 
   User.findOne({ email })
     .then(user => {
       //如果使用者已存在資料庫中，回到註冊頁面
       if (user) {
-        console.log('這個email已註冊過')
+        errors.push({ message: '這個email已經註冊過了。' })
         return res.render('register', { name, email, password, confirmPassword })
       }
 
@@ -48,6 +60,7 @@ router.post('/register', (req, res) => {
 //使用者登出
 router.get('/logout', (req, res) => {
   req.logout()
+  req.flash('success_msg', '您已成功登出')
   res.redirect('/users/login')
 })
 
