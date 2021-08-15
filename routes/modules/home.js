@@ -11,6 +11,7 @@ const generateYearArray = require('../../helpers/generateYearArray')
 const setDateRange = require('../../helpers/setDateRange')
 
 router.get('/', (req, res) => {
+  const userId = req.user._id
   const categoryFilter = req.query.categoryFilter ? { category: req.query.categoryFilter } : {}
   const yearFilter = req.query.yearFilter
   const monthFilter = req.query.monthFilter
@@ -22,14 +23,14 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ date: 'desc' })
     .then(records => {
-      //產生年度的array作為年度篩選的下拉選項
+      //根據資料庫中的所有資料產生年度的array作為年度篩選的下拉選項
       years = generateYearArray(records)
     })
     .then(() => {
       Category.find()
         .lean()
         .then(categories => {
-          Record.find({ $and: [categoryFilter, dateRange] })
+          Record.find({ $and: [{ userId }, categoryFilter, dateRange] })
             .lean()
             .sort({ date: 'desc' })
             .then(records => {

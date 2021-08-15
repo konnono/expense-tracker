@@ -16,17 +16,21 @@ router.get('/new', (req, res) => {
 
 //新增一筆紀錄
 router.post('/', (req, res) => {
-  Record.create(req.body)
-  res.redirect('./')
+  const userId = req.user._id
+  const { name, date, category, amount, merchant } = req.body
+  return Record.create({ name, date, category, amount, merchant, userId })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 // 渲染單筆紀錄編輯頁面
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
+  const userId = req.user._id
+  const _id = req.params.id
   Category.find()
     .lean()
     .then(categories => {
-      Record.findById(id)
+      Record.findOne({ _id, userId })
         .lean()
         .then(record => {
           const category = record.category
@@ -40,9 +44,10 @@ router.get('/:id/edit', (req, res) => {
 
 // 編輯單筆紀錄
 router.put('/:id/edit', (req, res) => {
-  const id = req.params.id
+  const userId = req.user._id
+  const _id = req.params.id
   const { name, date, category, amount, merchant } = req.body
-  Record.findById(id)
+  Record.findOne({ _id, userId })
     .then(record => {
       record.name = name
       record.date = date
@@ -58,8 +63,9 @@ router.put('/:id/edit', (req, res) => {
 
 // 刪除單筆紀錄
 router.delete('/:id/', (req, res) => {
-  const id = req.params.id
-  Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  Record.findOne({ _id, userId })
     .then(record => record.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
