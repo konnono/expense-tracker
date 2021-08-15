@@ -14,7 +14,7 @@
 - 在首頁可以根據支出「類別、年度、月份」篩選支出；總金額的計算只會包括被篩選出來的支出總和。
 
 ## 畫面截圖
-![首頁](https://github.com/konnono/expense-tracker/blob/main/cover_page.png) 
+![首頁](https://github.com/konnono/expense-tracker/blob/main/A2_cover_page.png) 
 
 ## 安裝方式
 1. 複製檔案
