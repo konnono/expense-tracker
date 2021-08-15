@@ -23,7 +23,7 @@ git clone https://github.com/konnono/expense-tracker.git
 ```
 2. 進入檔案夾
 ```
-
+cd expense-tracker
 ```
 
 3. 在檔案夾中執行
@@ -48,8 +48,10 @@ npm run start
 npm run dev
 ```
 7. 測試帳號:
+```
 帳號：user1@example.com
 密碼：12345678
 
 帳號：user2@example.com
 密碼：12345678
+```
