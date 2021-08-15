@@ -45,4 +45,5 @@ db.once('open', () => {
       console.log('done!')
       process.exit()
     })
+    .catch(err => console.log(err))
 })
